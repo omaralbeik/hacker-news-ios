@@ -1,0 +1,11 @@
+platform :ios, '9.0'
+
+target 'Hacker News' do
+  use_frameworks!
+
+  # Pods for Hacker News
+  pod 'HNClient'
+  pod 'SwifterSwift'
+  pod 'SnapKit'
+
+end
