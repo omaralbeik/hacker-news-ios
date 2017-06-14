@@ -9,6 +9,7 @@
 import UIKit
 import HNClient
 import SwifterSwift
+import SwiftMessages
 
 class HNWebViewController: UIViewController {
 
@@ -29,10 +30,16 @@ class HNWebViewController: UIViewController {
 		super.viewWillAppear(animated)
 		webView.story = story
 	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.navigationBar.setLoading(false)
+	}
 
 }
 
 
+// MARK: - Actions
 extension HNWebViewController {
 	
 	func didTapShareButton() {
@@ -49,6 +56,7 @@ extension HNWebViewController {
 		
 		alert.addAction(title: "Copy URL") { _ in
 			url.absoluteString.copyToPasteboard()
+			HNAlert.showURLCopied()
 		}
 		
 		alert.addAction(title: "Cancel")
@@ -60,11 +68,31 @@ extension HNWebViewController {
 }
 
 
+extension HNWebViewController: UIWebViewDelegate {
+	
+	func webViewDidStartLoad(_ webView: UIWebView) {
+		navigationController?.navigationBar.setLoading(true)
+	}
+	
+	func webViewDidFinishLoad(_ webView: UIWebView) {
+		navigationController?.navigationBar.setLoading(false)
+	}
+	
+	func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+		navigationController?.navigationBar.setLoading(false)
+	}
+	
+}
+
+
+// MARK: - Setup
 extension HNWebViewController {
 	
 	func setupViews() {
 		view.backgroundColor = HNColor.cream
 		view.addSubview(webView)
+		
+		webView.delegate = self
 		
 		layoutViews()
 	}

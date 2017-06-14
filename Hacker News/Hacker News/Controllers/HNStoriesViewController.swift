@@ -42,8 +42,12 @@ class HNStoriesViewController: UIViewController {
 extension HNStoriesViewController: HNStoriesTableViewDelegate {
 	
 	func didTapCell(forStory story: HNItem) {
+		guard let _ = story.url else {
+			return
+		}
 		let webVC = HNWebViewController()
 		webVC.story = story
+		webVC.hidesBottomBarWhenPushed = true
 		DispatchQueue.main.async {
 			self.navigationController?.pushViewController(webVC)
 		}
@@ -57,7 +61,15 @@ extension HNStoriesViewController: HNStoriesTableViewDelegate {
 	}
 	
 	func didTapSaveAction(forStory story: HNItem) {
-		print("Should save story")
+		debugPrint("Should save story")
+	}
+	
+	func didTapCopyAction(forStory story: HNItem) {
+		guard let url = story.url else {
+			return
+		}
+		url.absoluteString.copyToPasteboard()
+		HNAlert.showURLCopied()
 	}
 	
 }

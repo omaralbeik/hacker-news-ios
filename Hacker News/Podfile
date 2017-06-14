@@ -7,5 +7,7 @@ target 'Hacker News' do
   pod 'HNClient'
   pod 'SwifterSwift'
   pod 'SnapKit'
+  pod 'SwiftMessages'
+  pod 'BusyNavigationBar'
 
 end

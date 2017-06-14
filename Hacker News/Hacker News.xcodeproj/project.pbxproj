@@ -20,6 +20,8 @@
 		073A08001ED98CDC009CB115 /* HNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073A07FF1ED98CDC009CB115 /* HNWebViewController.swift */; };
 		073A08021ED98E46009CB115 /* HNWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073A08011ED98E46009CB115 /* HNWebView.swift */; };
 		077113EC1ED9CDB1009C549A /* HNStoriesViewControllerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077113EB1ED9CDB1009C549A /* HNStoriesViewControllerMode.swift */; };
+		07F18EB21EF167C400EBE451 /* HNAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F18EB11EF167C400EBE451 /* HNAlert.swift */; };
+		07F18EB51EF16DA400EBE451 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F18EB41EF16DA400EBE451 /* CommonExtensions.swift */; };
 		F68815970FBC20B1D854E5A9 /* Pods_Hacker_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3957652B09B652E5994E08 /* Pods_Hacker_News.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		073A07FF1ED98CDC009CB115 /* HNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HNWebViewController.swift; path = Controllers/HNWebViewController.swift; sourceTree = "<group>"; };
 		073A08011ED98E46009CB115 /* HNWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HNWebView.swift; path = Views/WebViews/HNWebView.swift; sourceTree = "<group>"; };
 		077113EB1ED9CDB1009C549A /* HNStoriesViewControllerMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HNStoriesViewControllerMode.swift; path = Models/HNStoriesViewControllerMode.swift; sourceTree = "<group>"; };
+		07F18EB11EF167C400EBE451 /* HNAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HNAlert.swift; path = Models/HNAlert.swift; sourceTree = "<group>"; };
+		07F18EB41EF16DA400EBE451 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonExtensions.swift; path = SupportingFiles/CommonExtensions.swift; sourceTree = "<group>"; };
 		40EA8D6A26176D8B3C7FFD8F /* Pods-Hacker News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.release.xcconfig"; sourceTree = "<group>"; };
 		521B1239EA7C9298742766DE /* Pods-Hacker News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.debug.xcconfig"; sourceTree = "<group>"; };
 		7F3957652B09B652E5994E08 /* Pods_Hacker_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hacker_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +85,7 @@
 				070277811ED9826400F2279B /* Models */,
 				070277791ED9817500F2279B /* Views */,
 				070277751ED9814200F2279B /* Controllers */,
+				07F18EB31EF16D8300EBE451 /* SupportingFiles */,
 				070277681ED980CE00F2279B /* Assets.xcassets */,
 				0702776A1ED980CE00F2279B /* LaunchScreen.storyboard */,
 				0702776D1ED980CE00F2279B /* Info.plist */,
@@ -131,6 +136,7 @@
 			children = (
 				0702777F1ED9826000F2279B /* HNColor.swift */,
 				077113EB1ED9CDB1009C549A /* HNStoriesViewControllerMode.swift */,
+				07F18EB11EF167C400EBE451 /* HNAlert.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -149,6 +155,14 @@
 				073A08011ED98E46009CB115 /* HNWebView.swift */,
 			);
 			name = WebViews;
+			sourceTree = "<group>";
+		};
+		07F18EB31EF16D8300EBE451 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				07F18EB41EF16DA400EBE451 /* CommonExtensions.swift */,
+			);
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		84C6752B3A89BD90BDD33D38 /* Frameworks */ = {
@@ -293,6 +307,7 @@
 			files = (
 				0702777B1ED9819A00F2279B /* HNStoryTableViewCell.swift in Sources */,
 				073A07FD1ED98B35009CB115 /* HNStoriesTableViewLoadingView.swift in Sources */,
+				07F18EB21EF167C400EBE451 /* HNAlert.swift in Sources */,
 				073A08001ED98CDC009CB115 /* HNWebViewController.swift in Sources */,
 				073A08021ED98E46009CB115 /* HNWebView.swift in Sources */,
 				070277771ED9816B00F2279B /* HNStoriesTableView.swift in Sources */,
@@ -301,6 +316,7 @@
 				070277741ED9813E00F2279B /* HNStoriesViewController.swift in Sources */,
 				077113EC1ED9CDB1009C549A /* HNStoriesViewControllerMode.swift in Sources */,
 				073A07FB1ED98528009CB115 /* HNNavigationController.swift in Sources */,
+				07F18EB51EF16DA400EBE451 /* CommonExtensions.swift in Sources */,
 				070277621ED980CE00F2279B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,10 +437,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C3VKVFB3SA;
 				INFOPLIST_FILE = "Hacker News/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omaralbeik.Hacker-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -435,10 +453,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C3VKVFB3SA;
 				INFOPLIST_FILE = "Hacker News/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omaralbeik.Hacker-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

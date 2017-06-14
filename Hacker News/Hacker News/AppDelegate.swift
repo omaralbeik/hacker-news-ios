@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		window?.rootViewController = HNTabBarController()
 		
+		UIApplication.shared.statusBarStyle = .lightContent
+		
 		return true
 	}
 

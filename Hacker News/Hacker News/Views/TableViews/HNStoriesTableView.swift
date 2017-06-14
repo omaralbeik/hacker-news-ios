@@ -14,6 +14,7 @@ protocol HNStoriesTableViewDelegate: class {
 	func didTapCell(forStory story: HNItem)
 	func didTapSaveAction(forStory story: HNItem)
 	func didTapOpenAction(forStory story: HNItem)
+	func didTapCopyAction(forStory story: HNItem)
 }
 
 
@@ -73,18 +74,29 @@ extension HNStoriesTableView: UITableViewDataSource, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		hnDelegate?.didTapCell(forStory: stories[indexPath.row])
 		deselectRow(at: indexPath, animated: true)
+		hnDelegate?.didTapCell(forStory: stories[indexPath.row])
 	}
 	
 	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+		
+		guard let _ = stories[indexPath.row].url else {
+			return []
+		}
+		
+		let copyUrlAction = UITableViewRowAction(style: .default, title: "Copy") { action, indexPath in
+			self.setEditing(false, animated: true)
+			self.hnDelegate?.didTapCopyAction(forStory: self.stories[indexPath.row])
+		}
+		copyUrlAction.backgroundColor = HNColor.orange
+		
 		let openUrlAction = UITableViewRowAction(style: .default, title: "Open") { action, indexPath in
 			self.setEditing(false, animated: true)
 			self.hnDelegate?.didTapOpenAction(forStory: self.stories[indexPath.row])
 		}
 		openUrlAction.backgroundColor = HNColor.black
 		
-		return [openUrlAction]
+		return [copyUrlAction, openUrlAction]
 	}
 	
 }
