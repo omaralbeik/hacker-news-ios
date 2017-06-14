@@ -8,6 +8,7 @@
 
 import UIKit
 import HNClient
+import SwifterSwift
 
 
 class HNStoriesViewController: UIViewController {
@@ -35,10 +36,56 @@ class HNStoriesViewController: UIViewController {
         super.viewDidLoad()
 		getStories()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		registerFor3DTouch()
+	}
 
 }
 
 
+// MARK: - UIViewControllerPreviewingDelegate
+extension HNStoriesViewController: UIViewControllerPreviewingDelegate {
+	
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+		
+		// Obtain the index path and the cell that was pressed.
+		let locationInTableView = tableView.convert(location, from: view)
+		
+		guard let indexPath = self.tableView.indexPathForRow(at: locationInTableView) else {
+			return nil
+		}
+		
+		let story = tableView.stories[indexPath.row]
+		
+		guard let _ = story.url else {
+			return nil
+		}
+		
+		guard let cell = tableView.cellForRow(at: indexPath) else {
+			return nil
+		}
+		
+		let webVC = HNWebViewController()
+		webVC.story = story
+		webVC.hidesBottomBarWhenPushed = true
+		
+		webVC.preferredContentSize = CGSize(width: 0.0, height: min(700.0, SwifterSwift.screenHeight - 100.0))
+		previewingContext.sourceRect = tableView.convert(cell.frame, to: tableView.superview)
+
+		return webVC
+
+	}
+	
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+		show(viewControllerToCommit, sender: self)
+	}
+	
+}
+
+
+// MARK: - HNStoriesTableViewDelegate
 extension HNStoriesViewController: HNStoriesTableViewDelegate {
 	
 	func didTapCell(forStory story: HNItem) {
@@ -77,6 +124,14 @@ extension HNStoriesViewController: HNStoriesTableViewDelegate {
 
 // MARK: - Helpers
 extension HNStoriesViewController {
+	
+	func registerFor3DTouch() {
+		if traitCollection.forceTouchCapability == .available {
+			self.registerForPreviewing(with: self, sourceView: view)
+		} else {
+			debugPrint("3D Touch is not available")
+		}
+	}
 	
 	func getStories() {
 		
