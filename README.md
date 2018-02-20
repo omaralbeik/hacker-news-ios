@@ -33,9 +33,6 @@ This application present a quick example on how to build iOS apps without using 
 
 ## Installing
 
-### AppStore
-The app is available for free without ads in the [AppStore](https://itunes.apple.com/us/app/id1248344534)
-
 ### Run Locally
 Open Hacker News.xcworkspace using Xcode and run using a connected iOS device or the simulator
 
